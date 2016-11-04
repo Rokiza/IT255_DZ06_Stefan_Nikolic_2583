@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>IT255-DZ06</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("button").click(function () {
+                    // alert($("#tekst").value);
+                    var txt = document.getElementById('tekst').value;
+                    $.ajax({url: "http://md5.jsontest.com/?text=" + txt, success: function (result) {
+                            $("#div1").html(result.md5);
+                            $("#md5").value = result.md5;
+                        }});
+                });
+            });
+
+        </script>
+
+        <style>
+            body
+            {
+                font-family: cursive;
+            }
+            .elem
+            {
+                width: 400px;
+            }
+            table
+            {
+                margin: 40px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Domaći zadatak - MD5 šifrovanje korišćenjem veb servisa</h1>
+
+        <form>
+            <table border="0">
+                <tr>
+                    <td>Originalan tekst</td>
+                    <td><input type="text" id="tekst" class="elem"  value="" /></td>
+                </tr>
+                <tr>
+                    <td>MD5 šifra</td>
+                    <td><div id="div1"></div></td>
+                </tr>
+            </table>
+        </form>
+
+        <button>Izračunaj MD5 šifru</button>
+
+    </body>
+</html>
